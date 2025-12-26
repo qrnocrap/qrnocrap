@@ -19,4 +19,4 @@ there’s probably a website like this already, but if there is, it's impossible
 * generates qr codes
 * *what else do you want?* then this site would be called just “qr”
 
-made with ❤️ by @soyfaii
+made with ❤️ by @soywig
