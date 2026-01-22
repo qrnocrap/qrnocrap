@@ -24,8 +24,18 @@ label {
   margin-right: 8px;
 }
 
-input {
+input:not([type="checkbox"]) {
   width: 300px;
+}
+
+div > input[type="text"]{
+  width: 123px;
+}
+
+div:has(> input) {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
 }
 
 input, select {

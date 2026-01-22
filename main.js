@@ -2,6 +2,7 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
   text: "https://example.com",
   width: 1000,
   height: 1000,
+  correctLevel: QRCode.CorrectLevel.L,
 });
 
 var urlInput = document.getElementById("urlInput");
@@ -12,14 +13,47 @@ var encryptionInput = document.getElementById("encryptionInput");
 
 var whatsappInput = document.getElementById("whatsappInput");
 
+var firstNameInput = document.getElementById("firstNameInput");
+var lastNameInput = document.getElementById("lastNameInput");
+var organizationInput = document.getElementById("organizationInput");
+var isCompanyInput = document.getElementById("isCompanyInput");
+var emailInput = document.getElementById("emailInput");
+var phoneInput = document.getElementById("phoneInput");
+var streetInput = document.getElementById("streetInput");
+var cityInput = document.getElementById("cityInput");
+var stateInput = document.getElementById("stateInput");
+var zipInput = document.getElementById("zipInput");
+var countryInput = document.getElementById("countryInput");
+var contactUrlInput = document.getElementById("contactUrlInput");
+var birthdayInput = document.getElementById("birthdayInput");
+
 var buttonDownload = document.getElementById("download-button");
 var buttonCopy = document.getElementById("copy-button");
 
-if (urlInput) urlInput.addEventListener("input", updateCode);
-if (ssidInput) ssidInput.addEventListener("input", updateCode);
-if (pwdInput) pwdInput.addEventListener("input", updateCode);
-if (encryptionInput) encryptionInput.addEventListener("input", updateCode);
-if (whatsappInput) whatsappInput.addEventListener("input", updateCode);
+const inputElements = [
+  urlInput,
+  ssidInput,
+  pwdInput,
+  encryptionInput,
+  whatsappInput,
+  firstNameInput,
+  lastNameInput,
+  organizationInput,
+  isCompanyInput,
+  emailInput,
+  phoneInput,
+  streetInput,
+  cityInput,
+  stateInput,
+  zipInput,
+  countryInput,
+  contactUrlInput,
+  birthdayInput,
+];
+
+inputElements.forEach((input) => {
+  if (input) input.addEventListener("input", updateCode);
+});
 
 buttonDownload.addEventListener("click", downloadCode);
 buttonCopy.addEventListener("click", copyCodeToClipboard);
@@ -31,6 +65,8 @@ function updateCode() {
     updateWifiCode();
   } else if (whatsappInput) {
     updateWhatsappCode();
+  } else if (firstNameInput) {
+    updateContactCode();
   }
 }
 
@@ -73,6 +109,47 @@ function updateWifiCode() {
   }
   qrcode.clear();
   qrcode.makeCode(wifiString);
+}
+
+function updateContactCode() {
+  const data = {
+    firstName: firstNameInput.value || undefined,
+    lastName: lastNameInput.value || undefined,
+    organization: organizationInput.value || undefined,
+    isCompany: isCompanyInput.checked,
+    email: emailInput.value || undefined,
+    phone: phoneInput.value || undefined,
+    address: `${streetInput.value};${cityInput.value};${stateInput.value};${zipInput.value};${countryInput.value}`,
+    url: contactUrlInput.value || undefined,
+    birthday: birthdayInput.value
+      ? new Date(birthdayInput.value).toISOString().split("T")[0]
+      : undefined,
+  };
+  const lines = {
+    beggining: "BEGIN:VCARD",
+    version: "VERSION:3.0",
+    ...((data.firstName || data.lastName) && {
+      name: `N:${data.lastName || ""};${data.firstName || ""};;;`,
+    }),
+    ...((data.firstName || data.lastName) && {
+      formattedName: `FN:${data.firstName || ""} ${data.lastName || ""}`,
+    }),
+    ...(data.organization && { organization: `ORG:${data.organization}` }),
+    ...(data.isCompany && { showAs: "X-ABShowAs:COMPANY" }),
+    ...(data.email && { email: `EMAIL;INTERNET:${data.email}` }),
+    ...(data.phone && { telephone: `TEL:${data.phone}` }),
+    ...(data.address &&
+      data.address !== ";;;" && { address: `ADR:;;${data.address}` }),
+    ...(data.url && { url: `URL:${data.url}` }),
+    ...(data.birthday && { birthday: `BDAY:${data.birthday}` }),
+    end: "END:VCARD",
+  };
+  if (!data.isCompany) {
+    delete lines.showAs;
+  }
+  const vcardString = Object.values(lines).join("\n");
+  qrcode.clear();
+  qrcode.makeCode(vcardString);
 }
 
 function downloadCode() {
