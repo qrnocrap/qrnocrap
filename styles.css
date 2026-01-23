@@ -1,58 +1,293 @@
 :root {
-  font-family: system-ui, Helvetica, Arial, sans-serif;
-  text-align: center;
-  color-scheme: light dark;
+    --light-color-bg: white;
+    --light-color-fg: #101010;
+    --light-button-bg: #f0f0f0;
+    --light-button-outline: #0000001a;
+    --light-button-hover-bg: #eaeaea;
+
+    --dark-color-bg: #101010;
+    --dark-color-fg: #f9f9f9;
+    --dark-button-bg: #202020;
+    --dark-button-outline: #ffffff1a;
+    --dark-button-hover-bg: #2a2a2a;
+
+    --color-bg: var(--light-color-bg);
+    --color-fg: var(--light-color-fg);
+    --button-bg: var(--light-button-bg);
+    --button-outline: var(--light-button-outline);
+    --prominent-button-outline: var(--dark-button-outline);
+    --button-hover-bg: var(--light-button-hover-bg);
+    --prominent-button-hover-bg: var(--dark-button-hover-bg);
+
+    color-scheme: light dark;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+    :root {
+        --color-bg: var(--dark-color-bg);
+        --color-fg: var(--dark-color-fg);
+        --button-bg: var(--dark-button-bg);
+        --button-outline: var(--dark-button-outline);
+        --prominent-button-outline: var(--light-button-outline);
+        --button-hover-bg: var(--dark-button-hover-bg);
+        --prominent-button-hover-bg: var(--light-button-hover-bg);
+    }
+}
+
+* {
+    font-family: system-ui;
+    margin: 0;
+    box-sizing: border-box;
 }
 
 body {
-  margin: auto;
-  margin-top: 50px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background-color: var(--color-bg);
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
 }
 
-h1 {
-  font-size: 2.5em;
-  margin-bottom: 0;
+@media (max-width: 700px) {
+    body {
+        flex-direction: column-reverse;
+        justify-content: start;
+    }
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    padding: 30px;
+    font-size: 20px;
+    gap: 10px;
+    justify-content: center;
+    color: var(--color-fg)
+}
+
+@media (max-width: 700px) {
+    nav {
+        position: sticky;
+        flex-direction: row;
+        height: auto;
+        width: 100%;
+        top: auto;
+        bottom: 0;
+        left: 0;
+        padding: 20px;
+        background-color: var(--button-bg);
+        overflow-x: scroll;
+        justify-content: start;
+        gap: 25px;
+        
+    }
+}
+
+nav a {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.2s;
+    text-wrap: nowrap;
+}
+
+nav a:hover {
+    transform: translateX(5px);
+}
+
+nav a.active {
+    font-weight: bold;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 700px;
+    align-items: center;
+    padding: 50px 20px;
+    gap: 60px;
+    font-size: 32px;
+}
+
+main.multicolumn {
+    flex-direction: row;
+    font-size: 24px;
+}
+
+@media (max-width: 700px) {
+    main {
+        flex-direction: column-reverse;
+        justify-content: space-between;
+        flex: 1;
+        font-size: 24px;
+    }
+}
+
+main #form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+@media (max-width: 700px) {
+    main #form {
+        gap: 10px;
+    }
+}
+
+main input:not([type="checkbox"]) {
+    width: 100%;
+    text-align: center;
+    border: none;
+    outline: none;
+    font-size: inherit;
+    background-color: transparent;
+    color: var(--color-fg);
+}
+
+main input::picker-icon {
+    color: var(--color-fg);
+}
+
+main input[type="checkbox"] {
+    height: 1em;
+    width: 1em;
+    font-size: 32px;
+    accent-color: var(--color-fg);
+}
+
+div.input-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+div.input-group > input, div.input-group > select, div.input-group > label {
+    flex: 1;
+}
+
+div.input-group > :first-child {
+    text-align: end;
+}
+
+div.input-group > :last-child {
+    text-align: start;
+}
+
+select, label {
+    font-size: inherit;
+    background-color: transparent;
+    color: var(--color-fg);
 }
 
 label {
-  font-size: small;
-  margin-right: 8px;
+    font-weight: 500;
 }
 
-input {
-  width: 300px;
+select {
+    border: none;
+    outline: none;
+    text-align: start;
 }
 
-input, select {
-  padding: 8px 16px;
-  border-radius: 8px;
-  border: 1px solid #cccccccc;
+@media (max-width: 700px) {
+    select, label {
+        font-size: 24px;
+    }
 }
 
-#qrcode > img, #qrcode > canvas {
-  width: 200px;
-  height: 200px;
-  padding: 20px;
-  background-color: white;
-  border-radius: 20px;
+main > div#qrcode {
+    width: 192px;
+    height: 192px;
+    aspect-ratio: 1;
+    outline: 20px solid white;
+    > img {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+div#actions {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 30px;
+    display: flex;
+    gap: 20px;
+}
+
+@media (max-width: 700px) {
+    div#actions {
+        position: initial;
+        padding-top: 0;
+        width: 100%;
+    }
 }
 
 button {
-  padding: 8px 16px;
-  border-radius: 8px;
-  border: 1px solid #cccccccc;
+    background-color: var(--button-bg);
+    padding: 5px 10px;
+    border: 1px solid var(--button-outline);
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 5px;
+    transition: all 0.1s;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    color: var(--color-fg);
 }
 
-a {
-  font-size: small;
-  color: #888;
+button.prominent {
+    background-color: var(--color-fg);
+    color: var(--color-bg);
+    border: 1px solid var(--prominent-button-outline);
 }
 
-.credits {
-  font-size: small;
+@media (max-width: 700px) {
+    button {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+
+    div#actions button {
+        flex: 1;
+    }
+}
+
+button:hover {
+    background-color: var(--button-hover-bg);
+}
+
+button.prominent:hover {
+    background-color: var(--prominent-button-hover-bg);
+}
+
+button:active {
+    transform: scale(0.99);
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 30px;
+    color: gray;
+    font-size: 16px;
+}
+
+@media (max-width: 700px) {
+    footer {
+        position: initial;
+    }
+}
+
+footer a {
+    color: inherit;
 }

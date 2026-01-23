@@ -4,31 +4,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>qrnocrap/wifi</title>
+    <title>qrnocrap/wi-fi</title>
     <link rel="stylesheet" href="../styles.css">
     <link rel="icon" type="image/x-icon" href="../favicon.ico">
 </head>
 
 <body>
-    <h1>qrnocrap/wifi</h1>
-    <input type="text" id="ssidInput" aria-label="Wi-Fi Network Name (SSID)" data-i18n="ssidInput.placeholder"
-        placeholder="network name (ssid)">
-    <input type="text" id="pwdInput" aria-label="Wi-Fi Network Password" data-i18n="passwordInput.placeholder"
-        placeholder="password">
-    <div>
-        <label for="encryptionInput" data-i18n="encryptionInput.label">security type</label>
-        <select id="encryptionInput" aria-label="Wi-Fi Network Security Type">
-            <option value="WPA" data-i18n="encryptionInput.option.wpa">wpa (most common)</option>
-            <option value="WEP" data-i18n="encryptionInput.option.wep">wep</option>
-            <option value="nopass" data-i18n="encryptionInput.option.none">none</option>
-        </select>
+    <nav>
+        <a href="..">qrnocrap</a>
+        <a class="active" href=".">/wi-fi</a>
+        <a href="../whatsapp">/whatsapp</a>
+        <a href="../contacts">/contacts</a>
+    </nav>
+    <main>
+        <div id="form">
+            <input type="text" id="ssidInput" aria-label="Wi-Fi Network Name (SSID)" data-i18n="ssidInput.placeholder"
+                placeholder="network name (ssid)">
+            <input type="text" id="pwdInput" aria-label="Wi-Fi Network Password" data-i18n="passwordInput.placeholder"
+                placeholder="password">
+            <div class="input-group">
+                <label for="encryptionInput" data-i18n="encryptionInput.label">security type</label>
+                <select id="encryptionInput" aria-label="Wi-Fi Network Security Type">
+                    <option value="WPA" data-i18n="encryptionInput.option.wpa">wpa (most common)</option>
+                    <option value="WEP" data-i18n="encryptionInput.option.wep">wep</option>
+                    <option value="nopass" data-i18n="encryptionInput.option.none">none</option>
+                </select>
+            </div>
+        </div>
+        <div id="qrcode"></div>
+        </main>
+        <div id="actions">
+            <button id="copy-button" aria-label="Copy QR code" data-i18n="copy-button.label">copy code to clipboard</button>
+            <button class="prominent" id="download-button" aria-label="Download QR code"
+                data-i18n="download-button.label">download code</button>
     </div>
-    <div id="qrcode"></div>
-    <div>
-        <button id="download-button" aria-label="Download QR code" data-i18n="download-button.label">download</button>
-        <button id="copy-button" aria-label="Copy QR code" data-i18n="copy-button.label">copy</button>
-    </div>
-    <a href="../" data-i18n="main.link">qrnocrap for everything else</a>
+    <footer>
+        <span data-i18n="credits.text">made with ❤ by </span><a href="https://soywig.space/">@soywig</a>
+    </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script src="../main.js"></script>

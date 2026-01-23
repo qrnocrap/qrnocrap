@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>qrnocrap/contacts</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+</head>
+
+<body>
+    <nav>
+        <a href="..">qrnocrap</a>
+        <a href="../wifi">/wi-fi</a>
+        <a href="../whatsapp">/whatsapp</a>
+        <a class="active" href=".">/contacts</a>
+    </nav>
+    <main class="multicolumn">
+        <div id="form">
+            <div class="input-group">
+                <input type="text" id="firstNameInput" aria-label="First Name" data-i18n="firstNameInput.placeholder"
+                    placeholder="first name">
+                <input type="text" id="lastNameInput" aria-label="Last Name" data-i18n="lastNameInput.placeholder"
+                    placeholder="last name">
+            </div>
+            <div class="input-group">
+                <div style="display: flex; align-items: center; justify-content: end; flex: 1;">
+                    <input type="checkbox" id="isCompanyInput" aria-label="Is Company" data-i18n="isCompanyInput.label">
+                </div>
+                <input type="text" id="organizationInput" aria-label="Organization Name" data-i18n="organizationInput.placeholder"
+                    placeholder="company">
+                </div>
+                <input type="text" id="emailInput" aria-label="Email Address" data-i18n="emailInput.placeholder"
+                    placeholder="email address">
+                <input type="text" id="phoneInput" aria-label="Phone Number" data-i18n="phoneInput.placeholder"
+                    placeholder="phone number">
+                <input type="text" id="streetInput" aria-label="Street Address" data-i18n="streetInput.placeholder"
+                    placeholder="street address">
+            <div class="input-group">
+                <input type="text" id="cityInput" aria-label="City" data-i18n="cityInput.placeholder" placeholder="city">
+                <input type="text" id="stateInput" aria-label="State/Province" data-i18n="stateInput.placeholder"
+                    placeholder="state/province">
+            </div>
+            <div class="input-group">
+                <input type="text" id="zipInput" aria-label="ZIP/Postal Code" data-i18n="zipInput.placeholder"
+                    placeholder="zip/postal code">
+                <input type="text" id="countryInput" aria-label="Country" data-i18n="countryInput.placeholder"
+                    placeholder="country">
+            </div>
+            <input type="text" id="contactUrlInput" aria-label="Contact URL" data-i18n="contactUrlInput.placeholder" <input
+                placeholder="url">
+            <div class="input-group">
+                <label for="birthdayInput" data-i18n="birthdayInput.placeholder">birthday</label>
+                <input type="date" id="birthdayInput" aria-label="Birthday" data-i18n="birthdayInput.placeholder"
+                    placeholder="birthday">
+            </div>
+            </div>
+        <div id="qrcode"></div>
+    </main>
+    <div id="actions">
+        <button id="copy-button" aria-label="Copy QR code" data-i18n="copy-button.label">copy code to clipboard</button>
+        <button class="prominent" id="download-button" aria-label="Download QR code"
+            data-i18n="download-button.label">download
+            code</button>
+    </div>
+    <footer>
+        <span data-i18n="credits.text">made with ❤ by </span><a href="https://soywig.space/">@soywig</a>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="../main.js"></script>
+    <script src="../js/i18n.js"></script>
+</body>
+
+</html>

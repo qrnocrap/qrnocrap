@@ -6,20 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>qrnocrap/whatsapp</title>
     <link rel="stylesheet" href="../styles.css">
-    <link rel="stylesheet" href="whatsapp.css">
     <link rel="icon" type="image/x-icon" href="../favicon.ico">
 </head>
 
 <body>
-    <h1>qrnocrap/<a href="../resources/images/whatsapp.gif">whatsapp</a></h1>
-    <input type="text" inputmode="numeric" id="whatsappInput" aria-label="QR code content"
-        data-i18n="whatsappInput.placeholder" placeholder="your phone number with country code">
-    <div id="qrcode"></div>
-    <div>
-        <button id="download-button" aria-label="Download QR code" data-i18n="download-button.label">download</button>
-        <button id="copy-button" aria-label="Copy QR code" data-i18n="copy-button.label">copy</button>
+    <nav>
+        <a href="..">qrnocrap</a>
+        <a href="../wifi">/wi-fi</a>
+        <a class="active" href=".">/whatsapp</a>
+        <a href="../contacts">/contacts</a>
+    </nav>
+    <main>
+        <input type="text" inputmode="numeric" id="whatsappInput" aria-label="QR code content"
+            data-i18n="whatsappInput.placeholder" placeholder="your phone number with country code">
+        <div id="qrcode"></div>
+        </main>
+        <div id="actions">
+            <button id="copy-button" aria-label="Copy QR code" data-i18n="copy-button.label">copy code to clipboard</button>
+            <button class="prominent" id="download-button" aria-label="Download QR code"
+                data-i18n="download-button.label">download
+                code</button>
     </div>
-    <a href="../" data-i18n="main.link">qrnocrap for everything else</a>
+    <footer>
+        <span data-i18n="credits.text">made with ❤ by </span><a href="https://soywig.space/">@soywig</a>
+    </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script src="../main.js"></script>
