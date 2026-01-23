@@ -16,21 +16,25 @@
 </head>
 
 <body>
-    <h1>qrnocrap</h1>
-    <input type="text" id="urlInput" aria-label="QR code content" data-i18n="urlInput.placeholder"
-        placeholder="url, phone, email, address, text…">
-    <div id="qrcode"></div>
-    <div>
-        <button id="download-button" aria-label="Download QR code" data-i18n="download-button.label">download</button>
-        <button id="copy-button" aria-label="Copy QR code" data-i18n="copy-button.label">copy</button>
+    <nav>
+        <a class="active" href=".">qrnocrap</a>
+        <a href="wifi">/wi-fi</a>
+        <a href="whatsapp">/whatsapp</a>
+        <a href="contacts">/contacts</a>
+    </nav>
+    <main>
+        <input type="text" id="urlInput" aria-label="QR code content" data-i18n="urlInput.placeholder"
+            placeholder="url, phone, email, address, text…">
+        <div id="qrcode"></div>
+        </main>
+        <div id="actions">
+            <button id="copy-button" aria-label="Copy QR code" data-i18n="copy-button.label">copy code to clipboard</button>
+            <button class="prominent" id="download-button" aria-label="Download QR code"
+                data-i18n="download-button.label">download code</button>
     </div>
-    <a href="wifi" data-i18n="wifi.link">qrnocrap for wi-fi</a>
-    <a href="whatsapp" data-i18n="whatsapp.link">qrnocrap for whatsapp</a>
-    <a href="contacts" data-i18n="contacts.link">qrnocrap for contacts</a>
-    <span class="credits">
-        <span data-i18n="credits.text">made with ❤️ by</span>
-        <a href="https://soywig.space" data-i18n="credits.link">@soywig</a>
-    </span>
+    <footer>
+        <span data-i18n="credits.text">made with ❤ by </span><a href="https://soywig.space/">@soywig</a>
+    </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script src="main.js"></script>

@@ -9,8 +9,7 @@
   "encryptionInput.option.none": "ninguna",
   "firstNameInput.placeholder": "nombre",
   "lastNameInput.placeholder": "apellido",
-  "organizationInput.placeholder": "nombre de la organización",
-  "isCompanyInput.label": "es una empresa",
+  "organizationInput.placeholder": "empresa",
   "emailInput.placeholder": "dirección de correo electrónico",
   "phoneInput.placeholder": "número de teléfono",
   "streetInput.placeholder": "calle y número",
@@ -18,14 +17,9 @@
   "stateInput.placeholder": "estado/provincia",
   "zipInput.placeholder": "código postal",
   "countryInput.placeholder": "país",
-  "contactUrlInput.placeholder": "url de contacto",
+  "contactUrlInput.placeholder": "url",
   "birthdayInput.placeholder": "cumpleaños",
-  "download-button.label": "descargar",
-  "copy-button.label": "copiar",
-  "main.link": "qrnocrap para todo lo demás",
-  "wifi.link": "qrnocrap para wi-fi",
-  "whatsapp.link": "qrnocrap para whatsapp",
-  "contacts.link": "qrnocrap para contactos",
-  "credits.text": "hecho con ❤️ por ",
-  "credits.link": "@soywig"
+  "download-button.label": "descargar código",
+  "copy-button.label": "copiar al portapapeles",
+  "credits.text": "hecho con ❤ por "
 }
